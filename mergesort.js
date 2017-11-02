@@ -25,14 +25,43 @@ function merge(array){
   var secondHalf = array[1];
   var totalLength = firstHalf.length + secondHalf.length;
   var firstHalfIterator = 0, secondHalfIterator = 0;
+  var result = [];
 
   for (var i = 0; i < totalLength; i++){
-    if (firstHalf[firstHalfIterator] <= first)
+    var first = firstHalf[firstHalfIterator];
+    var second = secondHalf[secondHalfIterator];
+    if (firstHalfIterator+1 > firstHalf.length){
+      result.push(second);
+      secondHalfIterator++;
+    }
+    else if (secondHalfIterator + 1 > secondHalf.length){
+      result.push(first);
+      firstHalfIterator++;
+    }
+    else if (first<=second){
+      result.push(first);
+      firstHalfIterator++;
+    }
+    else if (second<first){
+      result.push(second);
+      secondHalfIterator++;
+    }
   }
-
+  return result;
 }
 
 function mergeSort(array) {
-
+  var splitArrays = []; // [[5],[4]]
+  var theLength = array.length
+  var firstHalf = [];
+  var secondHalf = [];
+  while (splitArrays.length !== theLength)
+    if (secondHalf.length !== 1 && firstHalf.length !== 1){
+      var newArr = split(array);
+      firstHalf = newArr[0];
+      secondHalf = newArr[1];
+    } else if ( secondHalf.length === 1 && firstHalf.length !== 1) {
+      var newArr = split
+    }
 
 }
